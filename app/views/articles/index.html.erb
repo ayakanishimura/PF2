@@ -12,4 +12,5 @@
   <%= attachment_image_tag article, :image %>
   <h4>本文</h4>
   <%= article.body %>
+  <%= link_to  "#{article.article_comments.count}コメント", article_path(article) %>
 <% end %>
