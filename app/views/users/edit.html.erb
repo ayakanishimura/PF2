@@ -1,0 +1,16 @@
+<h1>プロフィール編集</h1>
+
+<%= form_with model:@user, local:true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control name" %>
+
+  <%= f.label :introduction %>
+  <%= f.text_area :introduction, class: "form-control introduction" %>
+
+  <%= f.submit "変更する" %>
+
+<% end %>
+
+
+
+

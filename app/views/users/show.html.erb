@@ -1,0 +1,15 @@
+<h1>マイページ</h1>
+<h3>名前</h3>
+<%= @user.name %>
+<h3>紹介文</h3>
+<%= @user.introduction %>
+
+<% if @user.id == current_user.id %>
+  <%= link_to "プロフィール編集", edit_user_path(@user) %>
+<% end %>
+
+
+<%= render 'articles/list', articles: @articles %>
+
+
+

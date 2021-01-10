@@ -1,0 +1,12 @@
+<h1>投稿記事編集</h1>
+
+<%= form_with model: @article, local:true do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  <h4>画像</h4>
+  <%= f.file_field :image %>
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit "保存" %>
+<% end %>
