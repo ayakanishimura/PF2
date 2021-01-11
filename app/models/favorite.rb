@@ -1,4 +1,4 @@
-class ArticleComment < ApplicationRecord
+class Favorite < ApplicationRecord
 
   belongs_to :user
   belongs_to :article

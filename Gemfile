@@ -68,3 +68,5 @@ gem "refile-mini_magick"
 
 gem 'pry-byebug'
 
+gem 'kaminari','~> 1.2.1'
+

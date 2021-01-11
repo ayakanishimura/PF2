@@ -14,3 +14,5 @@
   <%= article.body %>
   <%= link_to  "#{article.article_comments.count}コメント", article_path(article) %>
 <% end %>
+
+<%= paginate @articles %>

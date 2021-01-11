@@ -10,8 +10,9 @@ class ArticleCommentsController < ApplicationController
   end
 
   def destroy
+    ArticleComment.find_by(id: params[:id], article_id: params[article_id]).destroy
+    redirect_to article_path(params[:article_id])
   end
-
 
   private
 
