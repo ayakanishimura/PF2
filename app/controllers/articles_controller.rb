@@ -2,10 +2,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @genres = Genre.all
   end
 
   def create
     @article = Article.new(article_params)
+    # binding.pry
     @article.user_id = current_user.id
     @article.save
     redirect_to articles_path
@@ -40,7 +42,7 @@ class ArticlesController < ApplicationController
 private
 
   def article_params
-    params.require(:article).permit(:title, :body, :image)
+    params.require(:article).permit(:title, :body, :image, :genre_id)
   end
 
 end

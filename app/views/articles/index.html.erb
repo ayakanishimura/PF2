@@ -3,10 +3,14 @@
 <% @articles.each do |article| %>
   <h4>名前</h4>
   <%= article.user.name %>
-
+  
+  <h4>タイトル</h4>
   <%= link_to article_path(article.id) do %>
     <%= article.title %>
   <% end %>
+  
+  <h4>ジャンル</h4>
+  <%= article.genre.name %>
 
   <h4>画像</h4>
   <%= attachment_image_tag article, :image %>
