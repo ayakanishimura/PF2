@@ -16,7 +16,7 @@
   <%= link_to "削除", article_path(@article), method: :delete, data: { confirm: '本当に削除しますか？' }  %>
 <% end %>
 
-<div class="favorite-btn_<%= @article.id %>"><%= render 'favorites/favorites', article: @article %></div>
+<div class="favorite-btn_<%= @article.id %>"><%= render "favorites/favorites", article: @article %></div>
 
 
 <p>コメント件数：<%= @article.article_comments.count %></p>
