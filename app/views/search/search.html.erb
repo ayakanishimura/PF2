@@ -1,0 +1,10 @@
+<% if @articles.empty? %>
+  <h2>該当する検索結果はありません</h2>
+<% end %>
+  <% @articles.each do |article| %>
+    <div>
+      <p><%= article.title %></p><br>
+      <p><%= article.genre.name %></p>
+      <p><%= article.body %></p>
+    </div>
+  <% end %>
