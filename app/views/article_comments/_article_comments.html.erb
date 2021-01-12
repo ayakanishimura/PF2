@@ -1,0 +1,7 @@
+<% article.article_comments.each do |article_comment| %>
+  <%= article_comment.user.name %>
+  <%= article_comment.comment %>
+  <% if article_comment.user == current_user %>
+    <%= link_to "削除", article_article_comment_path(article_comment.article, article_comment), method: :delete, remote: true %>
+  <% end %>
+<% end %>

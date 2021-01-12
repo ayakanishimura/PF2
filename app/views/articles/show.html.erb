@@ -19,18 +19,15 @@
 <div class="favorite-btn_<%= @article.id %>"><%= render "favorites/favorites", article: @article %></div>
 
 
-<p>コメント件数：<%= @article.article_comments.count %></p>
 <%# コメント一覧 %>
-<% @article.article_comments.each do |article_comment| %>
-  <%= article_comment.user.name %>
-  <%= article_comment.comment %>
-  <% if article_comment.user == current_user %>
-    <%= link_to "削除", article_article_comment_path(article_comment.article, article_comment), method: :delete %>
-  <% end %>
-<% end %>
+<table class='comment-index'>
+  <%= render 'article_comments/article_comments', article: @article %>
+  <td class="comments-count">コメント件数：<%= @article.article_comments.count %></td>
+</table>
+
 
 <%# コメント新規投稿 %>
-<%= form_with(model:[@article,@article_comment],local: true) do |f| %>
+<%= form_with(model:[@article,@article_comment],remote: true) do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "コメントここに" %>
   <%= f.submit "送信する" %>
 <% end %>
