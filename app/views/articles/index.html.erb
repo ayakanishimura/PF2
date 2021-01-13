@@ -44,14 +44,4 @@
 
 <%= paginate @articles %>
 
-<h1>いいね数ランキング</h1>
-<% @all_ranks.each.with_index(1) do |article, i| %>
-    第<%= i %>位
-    <%= article.user.name %><br>
-    <%= link_to article_path(article) do %>
-      <%= article.title %>
-    <% end %><br>
-    ♥<%= article.favorites.count %>いいね
-    <br>
-<% end %>
-
+<%= render 'articles/ranking', all_ranks: @all_ranks %>

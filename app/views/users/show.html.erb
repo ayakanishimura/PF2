@@ -1,4 +1,24 @@
-<h1>マイページ</h1>
+<div class="container-fluid">
+	<h2 class="section-top"><span class="fas fa-dumbbell" aria-hidden="true"></span> マイページ</h2>
+	<div class="col-md-3 col-sm-12 col-xs-12">
+         <%= render 'articles/form', article: @article, genres: @genres %>
+ 	</div>
+ 	<div class="col-md-9 col-sm-12 col-xs-12">
+		<%= month_calendar events: @user.articles do |date, articles| %>
+		  <%= date.day %>
+		  <% articles.each do |article| %>
+		    <div>
+		      <%= link_to article.title, article_path(article) %>
+		    </div>
+		  <% end %>
+		<% end %>
+		<table class="memo table table-bordered">
+		    <%= render 'articles/list', articles: @articles %>
+  		</table>
+ 	</div>
+</div>
+
+
 <h3>名前</h3>
 <%= @user.name %>
 <h3>紹介文</h3>
@@ -9,7 +29,6 @@
 <% end %>
 
 
-<%= render 'articles/list', articles: @articles %>
 
 
 

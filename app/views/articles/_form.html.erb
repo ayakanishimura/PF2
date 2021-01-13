@@ -1,0 +1,18 @@
+<h1>新規投稿</h1>
+<div class="field row">
+  <%= form_with model: article, local:true do |f| %>
+    <h4>タイトル</h4>
+    <p><%= f.text_field :title %></p>
+    <h4>画像</h4>
+    <p><%= f.attachment_field :image %></p>
+    <h4>本文</h4>
+    <p><%= f.text_area :body %></p>
+    <h4>ジャンル選択</h4>
+    <p><%= f.collection_select(:genre_id, genres, :id, :name) %></p>
+    <h4>時間</h4>
+    <p><%= f.datetime_select :start_time %></p>
+</div>
+<div class="actions row">
+  <%= f.submit '投稿' %>
+</div>
+  <% end %>
