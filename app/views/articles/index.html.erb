@@ -39,6 +39,16 @@
   <%= attachment_image_tag article, :image %>
   <h4>本文</h4>
   <%= article.body %>
+  
+  <!-- フォロー機能 -->
+  <% if current_user != article.user %>
+    <% if article.user.followed_by?(current_user) %>
+      <p><%=link_to "フォロー済み", user_relationships_path(article.user.id), method: :delete %></p>
+    <% else %>
+      <p><%=link_to "フォローする", user_relationships_path(article.user.id), method: :post %></p>
+    <% end %>
+  <% end %>
+  
   <%= link_to  "#{article.article_comments.count}コメント", article_path(article) %>
 <% end %>
 
