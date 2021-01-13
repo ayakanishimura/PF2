@@ -1,6 +1,6 @@
 <h1>新規投稿</h1>
+<%= form_with model: article, local:true do |f| %>
 <div class="field row">
-  <%= form_with model: article, local:true do |f| %>
     <h4>タイトル</h4>
     <p><%= f.text_field :title %></p>
     <h4>画像</h4>
@@ -15,4 +15,4 @@
 <div class="actions row">
   <%= f.submit '投稿' %>
 </div>
-  <% end %>
+<% end %>
