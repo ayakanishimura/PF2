@@ -6,10 +6,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    article = Article.new(article_params)
     # binding.pry
-    @article.user_id = current_user.id
-    @article.save
+    article.user_id = current_user.id
+    article.save
+    # start_timeはcreateされた日時を指すため、create後に確定される
+    article.update(start_time:article.created_at)
     redirect_to articles_path
   end
 
