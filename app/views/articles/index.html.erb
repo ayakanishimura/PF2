@@ -1,57 +1,46 @@
-  <h5>キーワード検索</h5>
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field 'search[keyword]', size: "26x4", placeholder: 'キーワードから探す' %><br>
-    <%= f.submit :"検索" %>
-  <% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'articles/genre_search', genres: @genres %>
+    <div class="col-md-8 offset-md-1 mt-5">
+      <h2>投稿一覧</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>ジャンル</th>
+            <th>タイトル</th>
+            <th>本文</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= article.user.name %></td>
+              <td><%= article.genre.name %></td>
+              <td><%= link_to article_path(article.id) do %>
+                    <%= article.title %>
+                  <% end %>
+              </td>
+              <td><%= article.body %></td>
+              <td class="favorite-btn_<%= article.id %>"><%= render 'favorites/favorites', article: article %></td>
+              <td><%= link_to  "#{article.article_comments.count}コメント", article_path(article) %></td>
+              <td>
+                <% if current_user != article.user %>
+                  <% if article.user.followed_by?(current_user) %>
+                    <p><%=link_to "フォロー済み", user_relationships_path(article.user.id), method: :delete %></p>
+                  <% else %>
+                    <p><%=link_to "フォローする", user_relationships_path(article.user.id), method: :post %></p>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <table class="table table-bordered genre-table">
-    <thead>
-      <tr>
-        <th>ジャンル検索</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td>
-          <%= link_to genre.name, genre_search_path('search[value]': genre.id) %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-</table>
+      <%= paginate @articles %>
 
-<h1>投稿一覧</h1>
-
-<% @articles.each do |article| %>
-  <h4>名前</h4>
-  <%= article.user.name %>
-
-  <h4>タイトル</h4>
-  <%= link_to article_path(article.id) do %>
-    <%= article.title %>
-  <% end %>
-
-  <h4>ジャンル</h4>
-  <%= article.genre.name %>
-
-  <h4>画像</h4>
-  <%= attachment_image_tag article, :image %>
-  <h4>本文</h4>
-  <%= article.body %>
-  
-  <!-- フォロー機能 -->
-  <% if current_user != article.user %>
-    <% if article.user.followed_by?(current_user) %>
-      <p><%=link_to "フォロー済み", user_relationships_path(article.user.id), method: :delete %></p>
-    <% else %>
-      <p><%=link_to "フォローする", user_relationships_path(article.user.id), method: :post %></p>
-    <% end %>
-  <% end %>
-  
-  <%= link_to  "#{article.article_comments.count}コメント", article_path(article) %>
-<% end %>
-
-<%= paginate @articles %>
-
-<%= render 'articles/ranking', all_ranks: @all_ranks %>
+      <%= render 'articles/ranking', all_ranks: @all_ranks %>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,9 @@
  				</tbody>
  			</table>
  			<p>
+ 				<%= link_to "新規投稿する", new_article_path %>
+ 			</p>
+ 			<p>
  			<% if @user.id == current_user.id %>
 			  <%= link_to "プロフィール編集", edit_user_path(@user) %>
 			<% end %>
