@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @genres = Genre.all
+    @articles = Article.page(params[:page]).reverse_order
   end
 
   def create
