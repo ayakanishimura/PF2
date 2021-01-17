@@ -8,3 +8,37 @@
     ♥<%= article.favorites.count %>いいね
     <br>
 <% end %>
+
+
+
+
+<% all_ranks.each.with_index(1) do |article, i| %>
+  <% if   Time.current.month == article.start_time.month  %>
+    第<%= i %>位
+    <%= article.user.name %><br>
+    <%= article.start_time.strftime("%m月") %>
+    <%= link_to article_path(article) do %>
+      <%= article.title %>
+    <% end %><br>
+    ♥<%= article.favorites.count %>いいね<br>
+  <% end %>
+<% end %>
+
+<% one_months_ago_ranks.each.with_index(1) do |article, i| %>
+  <% if  Time.current.prev_month.month == article.start_time.month  %>
+    第<%= i %>位
+    <%= article.user.name %><br>
+    <%= article.start_time.strftime("%m月") %>
+    <%= link_to article_path(article) do %>
+      <%= article.title %>
+    <% end %><br>
+    ♥<%= article.favorites.count %>いいね
+    <br>
+  <% end %>
+<% end %>
+
+
+
+
+
+
