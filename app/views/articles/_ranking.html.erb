@@ -1,19 +1,5 @@
-<h2>いいね数ランキング</h2>
-<% @all_ranks.each.with_index(1) do |article, i| %>
-    第<%= i %>位
-    <%= article.user.name %><br>
-    <%= link_to article_path(article) do %>
-      <%= article.title %>
-    <% end %><br>
-    ♥<%= article.favorites.count %>いいね
-    <br>
-<% end %>
-
-
-
-
+<h2>今月のいいね記事ランキング</h2>
 <% all_ranks.each.with_index(1) do |article, i| %>
-  <% if   Time.current.month == article.start_time.month  %>
     第<%= i %>位
     <%= article.user.name %><br>
     <%= article.start_time.strftime("%m月") %>
@@ -21,11 +7,10 @@
       <%= article.title %>
     <% end %><br>
     ♥<%= article.favorites.count %>いいね<br>
-  <% end %>
 <% end %>
 
+<h2>先月のいいね記事ランキング</h2>
 <% one_months_ago_ranks.each.with_index(1) do |article, i| %>
-  <% if  Time.current.prev_month.month == article.start_time.month  %>
     第<%= i %>位
     <%= article.user.name %><br>
     <%= article.start_time.strftime("%m月") %>
@@ -33,8 +18,6 @@
       <%= article.title %>
     <% end %><br>
     ♥<%= article.favorites.count %>いいね
-    <br>
-  <% end %>
 <% end %>
 
 

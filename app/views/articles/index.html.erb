@@ -22,6 +22,7 @@
                   <% end %>
               </td>
               <td><%= article.body %></td>
+              <td><%= article.created_at %></td>
               <td class="favorite-btn_<%= article.id %>"><%= render 'favorites/favorites', article: article %></td>
               <td><%= link_to  "#{article.article_comments.count}コメント", article_path(article) %></td>
               <td>
@@ -40,7 +41,8 @@
 
       <%= paginate @articles %>
 
-      <%#= render 'articles/ranking', all_ranks: @all_ranks, one_months_ago_ranks: @one_months_ago_ranks %>
+      <%= render 'articles/ranking', all_ranks: @all_ranks, one_months_ago_ranks: @one_months_ago_ranks %>
+
     </div>
   </div>
 </div>
