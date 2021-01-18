@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @article = Article.new
@@ -7,13 +8,17 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.new(article_params)
-    article.user_id = current_user.id
-    article.save
+    @genres = Genre.all
+    @article = Article.new(article_params)
+    @article.user_id = current_user.id
+    @article.save
     # start_timeはcreateされた日時を指すため、create後に確定される
-    if article.update(start_time:article.created_at)
+    if @article.update(start_time:@article.created_at)
+      flash[:notice]  = "投稿が成功しました!!"
       redirect_to articles_path
     else
+    @genres = Genre.all
+    @articles = Article.page(params[:page]).reverse_order
       render :new
     end
   end
@@ -59,8 +64,12 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    @article.update(article_params)
-    redirect_to article_path(@article.id)
+    if @article.update(article_params)
+      flash[:notice] = "編集に成功しました"
+      redirect_to article_path(@article.id)
+    else
+      render :edit
+    end
   end
 
 

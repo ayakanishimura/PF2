@@ -1,4 +1,5 @@
 class ArticleCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @article = Article.find(params[:article_id])
@@ -6,7 +7,6 @@ class ArticleCommentsController < ApplicationController
     comment.user_id = current_user.id
     comment.article_id = @article.id
     comment.save
-    # redirect_to article_path(article)
   end
 
   def destroy

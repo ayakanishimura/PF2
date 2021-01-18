@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
   def search
     search_word = params[:search][:keyword]
     if search_word
