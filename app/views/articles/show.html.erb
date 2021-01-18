@@ -1,5 +1,4 @@
 <%= notice %>
-<%= render 'layouts/error_messages', obj: @article %>
 
 
 <h1>投稿詳細</h1>
@@ -29,6 +28,10 @@
   <td class="comments-count">コメント件数：<%= @article.article_comments.count %></td>
 </table>
 
+  <%# コメントのエラーメッセージ %>
+  <div id="comments_error">
+    <%= render 'layouts/error_messages', obj: @article_comment %>
+  </div>
 
 <%# コメント新規投稿 %>
 <%= form_with(model:[@article,@article_comment],remote: true) do |f| %>
