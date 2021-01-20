@@ -16,10 +16,26 @@
  */
  @import "bootstrap";
 
-.footer{
-  height:100px;
-  background-color:#e6c0c0;
-  color:#FFF;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+
+footer {
+  height:100%;
+  background-color:#bfbfbf;
+  color:#FFF;
+  text-align: center;
+  bottom: 0;
+}
+
+header {
+  background-color:#bfbfbf;
+}
+
+main {
+  min-height: 100vh;
+}
 
