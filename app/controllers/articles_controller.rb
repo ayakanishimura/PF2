@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     @article.save
     # start_timeはcreateされた日時を指すため、create後に確定される
     if @article.update(start_time:@article.created_at)
-      flash[:notice]  = "投稿が成功しました!!"
+      flash[:notice] = "投稿が成功しました!!"
       redirect_to articles_path
     else
     @genres = Genre.all
