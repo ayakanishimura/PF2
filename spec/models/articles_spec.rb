@@ -4,12 +4,13 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     before do
       @article = build(:article)
+      @user = build(:user)
     end
 
     context 'titleカラム' do
       it '空欄でないこと' do
         @article.title = ''
-        @article.valid?
+        @article.valid? # false or true
         expect(@article.errors.messages[:title]).to include("can't be blank")
       end
     end
