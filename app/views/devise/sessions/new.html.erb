@@ -5,7 +5,13 @@
         <p>日々の頑張りを記録に残そう</p>
       </div>
 
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value) %>
+        <% end %>
+
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+
+
         <div class="field">
           <strong><%= f.label :email %></strong><br />
           <div class="login_inputs">
