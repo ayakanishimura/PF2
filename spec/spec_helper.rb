@@ -95,7 +95,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   config.before(:each, type: :system) do
-
     driven_by :rack_test
   end
 end
