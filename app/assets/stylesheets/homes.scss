@@ -28,4 +28,13 @@
     margin-bottom: 20px;
 }
 
+header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+//   background-image: image-url('top2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
 
