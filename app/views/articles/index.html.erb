@@ -16,7 +16,9 @@
           <% @articles.each do |article| %>
             <tr>
               <td><%= article.user.name %></td>
-              <td><%= article.genre.name %></td>
+              <% unless article.genre.nil? %>
+                <td><%= article.genre.name %></td>
+              <% end %>
               <td class="article__title"><%= link_to article_path(article.id) do %>
                     <%= article.title %>
                   <% end %>

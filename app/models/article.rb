@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   attachment :image
   has_many:article_comments, dependent: :destroy
   has_many:favorites, dependent: :destroy
-  belongs_to :genre
+  belongs_to :genre, optional: true
 
 #公開・非公開設定
   enum status: { 公開: 0, 非公開: 1 }
