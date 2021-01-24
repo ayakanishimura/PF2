@@ -17,11 +17,11 @@
             <tr>
               <td><%= article.user.name %></td>
               <td><%= article.genre.name %></td>
-              <td><%= link_to article_path(article.id) do %>
+              <td class="article__title"><%= link_to article_path(article.id) do %>
                     <%= article.title %>
                   <% end %>
               </td>
-              <td><%= article.body %></td>
+              <td class="article__body"><%= article.body %></td>
               <td><%= article.created_at %></td>
               <td class="favorite-btn_<%= article.id %>"><%= render 'favorites/favorites', article: article %></td>
               <td><%= link_to  "#{article.article_comments.count}コメント", article_path(article) %></td>
