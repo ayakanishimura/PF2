@@ -31,12 +31,10 @@ footer {
   bottom: 0;
 }
 
-header {
-  background-color:#bfbfbf;
-}
 
 main {
   min-height: 100vh;
+  background-color: #f8f8f8;
 }
 
 .background-image {
@@ -55,3 +53,16 @@ main {
     border-radius: 4px;
     padding: 20px;
 }
+
+.btn-outline-secondary {
+    color: #6c757d;
+    background-color: transparent;
+    background-image: none;
+    border-color: #6c757d;
+    border: 1px solid;
+}
+
+.navbar-brand {
+  width: 80px;
+}
+

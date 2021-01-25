@@ -1,6 +1,9 @@
-<% if @articles.empty? %>
-  <h2>該当する検索結果はありません</h2>
-<% end %>
+<div class="search_sesult">
+  <% if @articles.empty? %>
+    <h2>該当する検索結果はありません<i class="fas fa-sad-tear"></i></h2>
+ 		<%= link_to "検索画面に戻る", articles_path %>
+  <% end %>
+</div>
   <% @articles.each do |article| %>
     <div>
       <p><%= article.title %></p><br>

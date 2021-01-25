@@ -1,40 +1,49 @@
-<%= notice %>
-
-
-<h1>投稿詳細</h1>
-
-<h4>名前</h4>
-<%= @article.user.name %>
-<h4>タイトル</h4>
-<%= @article.title %>
-<h4>画像</h4>
-<%= attachment_image_tag @article, :image %>
-<h4>本文</h4>
-<%= @article.body %>
-<h4>投稿日時</h4>
-<%= @article.created_at.strftime('%Y/%m/%d') %>
-
-<% if @article.user == current_user %>
-  <%= link_to "編集", edit_article_path(@article) %>
-  <%= link_to "削除", article_path(@article), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "delete-btn" %>
-<% end %>
-
-<div class="favorite-btn_<%= @article.id %>"><%= render "favorites/favorites", article: @article %></div>
-
-
-<%# コメント一覧 %>
-<table class='comment-index'>
-  <%= render 'article_comments/article_comments', article: @article %>
-  <td class="comments-count">コメント件数：<%= @article.article_comments.count %></td>
-</table>
-
-  <%# コメントのエラーメッセージ %>
-  <div id="comments_error">
-    <%= render 'layouts/error_messages', obj: @article_comment %>
+<div class="container">
+  <div class="row">
+  	<div class="col-9 bg-white rounded">
+		<h1 class="mt-4"><%= @article.title %></h1>
+		<div class="row">
+			<div class="col-9">
+				<p><%= @article.user.name %></p>
+			</div>
+		</div>
+		<h4>画像</h4>
+    <%= attachment_image_tag @article, :image %>
+    <h4>本文</h4>
+    <%= @article.body %>
+    <% if @article.user == current_user %>
+      <%= link_to "編集", edit_article_path(@article) %>
+      <%= link_to "削除", article_path(@article), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "delete-btn" %>
+    <% end %>
+		<div class="mt-4 d-flex">
+			<p class="font-italic mr-2"><%= @article.created_at.strftime('%Y/%m/%d') %></p>
+		</div>
+    <div class="favorite-btn_<%= @article.id %>"><%= render "favorites/favorites", article: @article %></div>
+    <div class="far fa-comments ml-1"><%= @article.article_comments.count %></div>
+		</div>
   </div>
 
-<%# コメント新規投稿 %>
-<%= form_with(model:[@article,@article_comment],remote: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
+		<div class="card my-4">
+			<h5 class="card-header">Comment:</h5>
+			     <div id="comments_error">
+              <%= render 'layouts/error_messages', obj: @article_comment %>
+            </div>
+        <div class="card-body pb-0">
+          <div class="form-group pb-3 border-bottom">
+            <%= form_with(model:[@article,@article_comment],remote: true) do |f| %>
+              <%= f.text_area :comment, rows:'5',placeholder: "コメントここに" %>
+              <%= f.submit "送信する", class: "btn-outline-secondary mt-3 mb-2" %>
+            <% end %>
+				</div>
+          	</div>
+				<div class="media mb-4 ml-2">
+				  <table class='comment-index'>
+            <%= render 'article_comments/article_comments', article: @article %>
+            <td class="comments-count">コメント件数：<%= @article.article_comments.count %></td>
+          </table>
+				</div>
+			<div class="mx-auto"></div>
+		</div>
+		<a class="btn btn-outline-secondary mt-3 mb-2" href="/articles">投稿一覧に戻る</a>
+	</div>
+

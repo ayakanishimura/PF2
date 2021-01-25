@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PF</title>
+    <title>My Diary</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,14 +10,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  </body>
-
-  <%= render 'layouts/header' %>
-
-  <main>
-    <%= yield %>
+  <body>
+    <%= render 'layouts/header' %>
+   <main>
+     <%= yield %>
   </main>
-
   <%= render 'layouts/footer' %>
   </body>
 </html>
