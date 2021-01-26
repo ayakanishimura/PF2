@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get '/search' => 'search#search'
   get '/genre_search' => 'search#genre_search'
+
+  devise_for :users
+
   root to: 'homes#top'
   get '/about' => 'homes#about'
   resources :articles do
@@ -17,5 +20,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'sessions#new_guest'
   end
+
+
+
 
 end
