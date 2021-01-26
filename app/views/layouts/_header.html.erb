@@ -1,7 +1,9 @@
 <header>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
+      <%= link_to root_path do %>
         <img class="navbar-brand" src="<%= asset_path('logo2.png') %>" >
+      <% end %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav nav-tab ml-auto border-bottom">
         <% if user_signed_in? %>
