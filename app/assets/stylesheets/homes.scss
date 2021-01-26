@@ -38,3 +38,33 @@ header.masthead {
   background-size: cover;
 }
 
+.about-contents h4 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.about-contents h5 {
+  font-size: 25px;
+  margin: 50px 0;
+}
+
+.about-text p, strong {
+  display: inline-block;
+  border-bottom: dashed 1px #c7a5cc;
+}
+
+.about-button {
+  margin: 90px;
+}
+
+.about-item {
+  text-align: center;
+}
+
+.about-item p {
+  margin-top: 10px;
+}
+
+.main-text {
+  text-align: center;
+}
