@@ -26,24 +26,27 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.where(status: 0).page(params[:page]).reverse_order
     @genres = Genre.all
+
     #いいねランキング
     # @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(5).pluck(:article_id))
 
+    #当月ランキング
     today = Time.zone.today
     articles = Article.where(start_time: today.beginning_of_month..today.end_of_month)
     article_ids = Favorite
       .where(article_id: articles.pluck(:id))
       .group(:article_id)
       .order('count(article_id) desc').limit(5).pluck(:article_id)
-    @all_ranks = Article.where(id: article_ids)
+    @all_ranks = Article.find(article_ids)
 
+    #先月ランキング
     one_months_ago = 1.months.ago
     one_months_ago_articles = Article.where(start_time: one_months_ago.beginning_of_month..one_months_ago.end_of_month)
     one_months_ago_article_ids = Favorite
       .where(article_id: one_months_ago_articles.pluck(:id))
       .group(:article_id)
       .order('count(article_id) desc').limit(5).pluck(:article_id)
-    @one_months_ago_ranks = Article.where(id: one_months_ago_article_ids)
+    @one_months_ago_ranks = Article.find(one_months_ago_article_ids)
 
   end
 
@@ -72,6 +75,17 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def myindex
+    user = User.find(params[:id])
+    @genres = Genre.all
+
+    if user.id == current_user.id
+      @articles = Article.where(user_id: user.id)
+    else
+      @articles = Article.where(status: 0, user_id: user.id)
+    end
+
+  end
 
 
 private

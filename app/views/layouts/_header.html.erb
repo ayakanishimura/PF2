@@ -7,6 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav nav-tab ml-auto border-bottom">
         <% if user_signed_in? %>
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <i class="fas fa-home"></i>
+              <span>マイページ</span>
+            <% end %>
+          </li>
+
           <li class="nav-item"><%= link_to 'マイページ',user_path(current_user),class: 'fas fa-house-user nav-link' %></li>
           <li class="nav-item"><%= link_to '新規投稿',new_article_path,class: 'fas fa-edit nav-link' %></li>
           <li class="nav-item"><%= link_to '投稿一覧',articles_path,class: 'fas fa-book-open nav-link' %></li>
