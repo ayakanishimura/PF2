@@ -14,6 +14,13 @@
             あなただけの、
            自分史を作りましょう。</p>
         </div>
+
+        <div class="row mb-3 d-flex justify-content-center main-text">
+          <p class="main-button"><%= link_to '新規登録', new_user_registration_path, class: "btn btn-success" %></p>
+          <p class="main-button"><%= link_to 'ログイン', new_user_session_path, class: "btn btn-success" %></p>
+          <p class="main-button"><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-success" %></p>
+        </div>
+
       </div>
     </div>
 
@@ -89,7 +96,7 @@
 
     <div class="row d-flex justify-content-center">
       <div class="about-button">
-        <%= link_to "始める", new_user_registration_path, class: "btn btn-primary btn-xl js-scroll-trigger" %>
+        <%= link_to "始める", new_user_registration_path, class: "btn btn-success" %>
       </div>
     </div>
 

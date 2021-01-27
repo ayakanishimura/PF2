@@ -2,13 +2,17 @@
   <h5 class="card-header">今月のいいねランキング</h5>
   <div class="card-body">
   <% all_ranks.each.with_index(1) do |article, i| %>
-	    第<%= i %>位
-      <%= article.user.name %><br>
-      <%= article.start_time.strftime("%m月") %>
-      <%= link_to article_path(article) do %>
-        <%= article.title %>
-      <% end %><br>
-      ♥<%= article.favorites.count %>いいね<br>
+  <div class="ranking-text">
+	    <strong class="ranking-nunmer">第<%= i %>位</strong>
+	    <div class="ranking-body">
+        <div><i class="fas fa-heart"></i>：<%= article.favorites.count %></div>
+        <div><i class="fas fa-user"></i>：<%= article.user.name %></div>
+        <div><i class="fas fa-book-open"></i>：
+        <%= link_to article_path(article) do %>
+          <%= article.title %>
+        <% end %></div>
+      </div>
+  </div>
   <% end %>
 	</div>
 </div>
