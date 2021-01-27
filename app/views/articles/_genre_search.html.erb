@@ -15,7 +15,7 @@
     <%= form_with url: search_path, method: :get, local: true do |f| %>
     	<div class="input-group">
 		  <%= f.text_field 'search[keyword]', size: "26x4", placeholder: 'キーワードから探す' %><br>
-      <%= f.submit :"検索", class:  "btn btn-success mt-2" %>
+      <%= f.submit :"検索", class: "btn btn-outline-secondary mt-2" %>
       </div>
     <% end %>
 	  </div>

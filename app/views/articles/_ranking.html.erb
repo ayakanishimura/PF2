@@ -1,5 +1,5 @@
 <div class="card my-4">
-  <h5 class="card-header">今月のいいね記事ランキング</h5>
+  <h5 class="card-header">今月のいいねランキング</h5>
   <div class="card-body">
   <% all_ranks.each.with_index(1) do |article, i| %>
 	    第<%= i %>位
@@ -14,7 +14,7 @@
 </div>
 
 <div class="card my-4">
-  <h5 class="card-header">先月のいいね記事ランキング</h5>
+  <h5 class="card-header">先月のいいねランキング</h5>
   <div class="card-body">
   <% one_months_ago_ranks.each.with_index(1) do |article, i| %>
       第<%= i %>位

@@ -1,13 +1,57 @@
-<div class="search_sesult">
-  <% if @articles.empty? %>
-    <h2>該当する検索結果はありません<i class="fas fa-sad-tear"></i></h2>
- 		<%= link_to "検索画面に戻る", articles_path %>
-  <% end %>
-</div>
-  <% @articles.each do |article| %>
-    <div>
-      <p><%= article.title %></p><br>
-      <p><%= article.genre.name %></p>
-      <p><%= article.body %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <%= render 'articles/genre_search', genres: @genres %>
     </div>
-  <% end %>
+
+    <div class="col-md-8 offset-md-1 mt-5">
+      <h2><i class="fas fa-book-open"></i>検索結果一覧</h2>
+      <div class="col-10">
+        <div class="search_sesult">
+          <% if @articles.empty? %>
+            <h2 class="mt-5">該当する検索結果はありません<i class="fas fa-sad-tear"></i></h2>
+         		<%= link_to "投稿一覧画面に戻る", articles_path, class: "btn btn-outline-secondary mt-3" %>
+          <% end %>
+        </div>
+        <% @articles.each do |article| %>
+        <div class="card">
+          <h5 class="card-header">
+            <%= link_to article_path(article.id) do %>
+              <%= article.title %>
+            <% end %>
+            <span class="float-right"><small class="fas fa-user">
+              <%= link_to user_path(article.user) do %>
+                <%= article.user.name %>
+              <% end %> </small>
+            </span></h5>
+            <div class="card-body">
+              <p class="card-text small_line_wrap"><%= article.body %></p>
+              <div class="d-flex justify-content-end">
+                <div class="pt-1 mr-2">
+                  <small>投稿日:<%= article.created_at.strftime('%m/%d') %></small>
+                  <i class="favorite-btn_<%= article.id %>"><%= render 'favorites/favorites', article: article %></i>
+                  <i class="far fa-comments ml-1"></i>
+                  <%= article.article_comments.count %>
+                </div>
+                </div>
+              </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
