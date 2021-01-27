@@ -27,10 +27,7 @@ class ArticlesController < ApplicationController
     @articles = Article.where(status: 0).page(params[:page]).reverse_order
     @genres = Genre.all
 
-    #いいねランキング
-    # @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(5).pluck(:article_id))
-
-    #当月ランキング
+    #当月いいねランキング
     today = Time.zone.today
     articles = Article.where(start_time: today.beginning_of_month..today.end_of_month)
     article_ids = Favorite
@@ -39,7 +36,7 @@ class ArticlesController < ApplicationController
       .order('count(article_id) desc').limit(5).pluck(:article_id)
     @all_ranks = Article.find(article_ids)
 
-    #先月ランキング
+    #先月いいねランキング
     one_months_ago = 1.months.ago
     one_months_ago_articles = Article.where(start_time: one_months_ago.beginning_of_month..one_months_ago.end_of_month)
     one_months_ago_article_ids = Favorite
@@ -78,13 +75,13 @@ class ArticlesController < ApplicationController
   def myindex
     user = User.find(params[:id])
     @genres = Genre.all
-
+    
+    #表示の条件（公開・非公開）
     if user.id == current_user.id
       @articles = Article.where(user_id: user.id)
     else
       @articles = Article.where(status: 0, user_id: user.id)
     end
-
   end
 
 

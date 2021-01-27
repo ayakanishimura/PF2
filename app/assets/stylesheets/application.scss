@@ -38,20 +38,22 @@ footer {
 
 main {
   min-height: 100vh;
-  // background-color: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
-.background-image {
-  background-image: image-url('top2.jpg');
-    background-size: cover;
-    position: fixed;
-    width: 100%;
+.main-title {
+  margin-top: 100px;
 }
+
+.header-nav {
+  background-color: #f8f8f8;
+}
+
+
 
 .login_main, .top_main {
-    margin: 10px auto;
+    margin: 0px auto;
     width: 420px;
-    height: 600px;
     text-align: center;
     background-color: rgba(255,255,255,0.75);
     border-radius: 4px;

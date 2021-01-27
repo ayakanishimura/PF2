@@ -78,7 +78,7 @@ header.masthead {
   margin: 20px 10px;
 }
 
-.top-image {
+.top-image, .background-image {
   background-image: image-url('top3.jpg');
   background-size: cover;
   min-height: 100vh;
@@ -91,6 +91,3 @@ header.masthead {
 //   background-size: cover;
 // }
 
-.main-title {
-  margin-top: 50px;
-}
