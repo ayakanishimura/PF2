@@ -8,7 +8,7 @@
         <% end %> </small>
       </span></h4>
         <div class="article-text">
-          <p><%= attachment_image_tag @article, :image %></p>
+          <p><%= attachment_image_tag @article, :image, size:'300x300' %></p>
           <p><%= @article.body %></p>
 
           <div class="d-flex justify-content-end">
