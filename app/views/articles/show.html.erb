@@ -3,7 +3,7 @@
   	<div class="col-9 bg-white rounded article-show">
   	  <div class="success_messages">
     	  <%= notice %>
-    	 </div> 
+    	 </div>
   		<h4 class="mt-4"><%= @article.title %>
   		<span class="float-right"><small class="fas fa-user">
         <%= link_to user_path(@article.user) do %>
@@ -53,9 +53,9 @@
   				  </div>
           </div>
   				<div class="media mb-4 ml-2">
-           <p class='comment-index'>
+           <div class='comment-index'>
               <%= render 'article_comments/article_comments', article: @article %>
-            </p>
+           </div>
   				</div>
   			<%= link_to "投稿一覧に戻る", articles_path, class: "btn btn-outline-secondary mt-3 mb-5" %>
   		</div>

@@ -1,5 +1,6 @@
-<% article.article_comments.each do |article_comment| %>
+
   <table class="article-comment">
+  <% article.article_comments.each do |article_comment| %>
     <tr>
       <td class="fas fa-user">
         <%= link_to user_path(article_comment.user) do %>
@@ -15,5 +16,5 @@
         <% end %>
       </td>
     </tr>
+  <% end %>
   </table>
-<% end %>

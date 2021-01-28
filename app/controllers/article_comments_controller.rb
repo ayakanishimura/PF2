@@ -13,6 +13,7 @@ class ArticleCommentsController < ApplicationController
 
   def destroy
     ArticleComment.find_by(id: params[:id], article_id: params[:article_id]).destroy
+    @article = Article.find(params[:article_id])
   end
 
   private
