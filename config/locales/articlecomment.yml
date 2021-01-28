@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      article_comment:
+        comment: コメント
+

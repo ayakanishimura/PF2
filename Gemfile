@@ -88,3 +88,8 @@ group :production do
 end
 
 gem 'rubocop-airbnb'
+
+gem 'rails-i18n'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'
