@@ -7,23 +7,61 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav nav-tab ml-auto border-bottom">
         <% if user_signed_in? %>
-          <li>
+          <li class="nav-item">
             <%= link_to user_path(current_user) do %>
-              <i class="fas fa-home"></i>
-              <span>マイページ</span>
+              <i class="fas fa-house-user nav-icon"></i>
+              <span class="nav-text">マイページ</span>
             <% end %>
           </li>
-
-          <li class="nav-item"><%= link_to 'マイページ',user_path(current_user),class: 'fas fa-house-user nav-link' %></li>
-          <li class="nav-item"><%= link_to '新規投稿',new_article_path,class: 'fas fa-edit nav-link' %></li>
-          <li class="nav-item"><%= link_to '投稿一覧',articles_path,class: 'fas fa-book-open nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ユーザー一覧',users_path ,class: 'fas fa-users nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link' %></li>
+          <li class="nav-item">
+            <%= link_to new_article_path do %>
+              <i class="fas fa-edit nav-icon"></i>
+              <span class="nav-text">投稿する</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to articles_path do %>
+              <i class="fas fa-book-open nav-icon"></i>
+              <span class="nav-text">投稿一覧</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to users_path do %>
+              <i class="fas fa-users nav-icon"></i>
+              <span class="nav-text">ユーザー一覧</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt nav-icon"></i>
+              <span class="nav-text">ログアウト</span>
+            <% end %>
+          </li>
         <% else %>
-          <li class="nav-item"><%= link_to ' Home',root_path,class: 'fas fa-home nav-link' %></li>
-          <li class="nav-item"><%= link_to ' About',about_path,class: 'fas fa-link nav-link' %></li>
-          <li class="nav-item"><%= link_to '新規登録', new_user_registration_path,class: 'fas fa-user-plus nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link'%></li>
+          <li class="nav-item">
+            <%= link_to root_path do %>
+              <i class="fas fa-home nav-icon"></i>
+              <span class="nav-text">Home</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to about_path do %>
+              <i class="fas fa-question-circle nav-icon"></i>
+              <span class="nav-text">MY DIARYとは</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus nav-icon"></i>
+              <span class="nav-text">新規登録</span>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt nav-icon"></i>
+              <span class="nav-text">ログイン</span>
+            <% end %>
+          </li>
         <% end %>
         </ul>
       </div>
