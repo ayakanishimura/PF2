@@ -15,22 +15,22 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    #当月いいねランキング
+    # 当月いいねランキング
     today = Time.zone.today
     articles = Article.where(start_time: today.beginning_of_month..today.end_of_month)
-    article_ids = Favorite
-      .where(article_id: articles.pluck(:id))
-      .group(:article_id)
-      .order('count(article_id) desc').limit(5).pluck(:article_id)
+    article_ids = Favorite.
+      where(article_id: articles.pluck(:id)).
+      group(:article_id).
+      order('count(article_id) desc').limit(5).pluck(:article_id)
     @all_ranks = Article.find(article_ids)
 
-    #先月いいねランキング
+    # 先月いいねランキング
     one_months_ago = 1.months.ago
     one_months_ago_articles = Article.where(start_time: one_months_ago.beginning_of_month..one_months_ago.end_of_month)
-    one_months_ago_article_ids = Favorite
-      .where(article_id: one_months_ago_articles.pluck(:id))
-      .group(:article_id)
-      .order('count(article_id) desc').limit(5).pluck(:article_id)
+    one_months_ago_article_ids = Favorite.
+      where(article_id: one_months_ago_articles.pluck(:id)).
+      group(:article_id).
+      order('count(article_id) desc').limit(5).pluck(:article_id)
     @one_months_ago_ranks = Article.find(one_months_ago_article_ids)
   end
 
@@ -50,11 +50,9 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
-
   private
 
   def user_params
     params.require(:user).permit(:name, :introduction)
   end
-
 end

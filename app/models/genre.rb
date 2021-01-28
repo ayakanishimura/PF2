@@ -1,6 +1,4 @@
 class Genre < ApplicationRecord
-
-#アソシエーション
+  # アソシエーション
   has_many :articles
-
 end

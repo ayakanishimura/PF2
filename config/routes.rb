@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about' => 'homes#about'
   resources :articles do
-    resource :favorites, only:[:create, :destroy]
-    resources :article_comments, only:[:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    resources :article_comments, only: [:create, :destroy]
   end
 
   resources :users do
@@ -21,7 +21,4 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'sessions#new_guest'
   end
-
-
-
 end

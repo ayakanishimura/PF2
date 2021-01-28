@@ -8,8 +8,4 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       end
     end
   end
-  
-  
-  
-  
 end

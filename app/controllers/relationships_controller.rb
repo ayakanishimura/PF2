@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   def create
     follow = current_user.active_relationships.build(follower_id: params[:user_id])
     follow.save

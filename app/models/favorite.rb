@@ -1,7 +1,5 @@
 class Favorite < ApplicationRecord
-
-#アソシエーション
+  # アソシエーション
   belongs_to :user
   belongs_to :article
-
 end

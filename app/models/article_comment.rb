@@ -1,10 +1,8 @@
 class ArticleComment < ApplicationRecord
-
-#アソシエーション
+  # アソシエーション
   belongs_to :user
   belongs_to :article
 
-#バリデーション
+  # バリデーション
   validates :comment, presence: true
-
 end
