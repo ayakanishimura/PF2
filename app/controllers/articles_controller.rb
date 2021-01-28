@@ -44,7 +44,6 @@ class ArticlesController < ApplicationController
       .group(:article_id)
       .order('count(article_id) desc').limit(5).pluck(:article_id)
     @one_months_ago_ranks = Article.find(one_months_ago_article_ids)
-
   end
 
   def show
@@ -80,9 +79,9 @@ class ArticlesController < ApplicationController
 
     #表示の条件（公開・非公開）
     if @user.id == current_user.id
-      @articles = Article.where(user_id: @user.id)
+      @articles = Article.where(user_id: @user.id).page(params[:page]).reverse_order
     else
-      @articles = Article.where(status: 0, user_id: @user.id)
+      @articles = Article.where(status: 0, user_id: @user.id).page(params[:page]).reverse_order
     end
   end
 

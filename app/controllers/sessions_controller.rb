@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  
+  #ゲストユーザー作成
   def new_guest
     user = User.guest
     sign_in user

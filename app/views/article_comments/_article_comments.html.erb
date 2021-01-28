@@ -1,19 +1,19 @@
 <% article.article_comments.each do |article_comment| %>
-<table class="article-comment">
-  <tr>
-    <td class="fas fa-user">
-      <%= link_to user_path(article_comment.user) do %>
-        <%= article_comment.user.name %>
-      <% end %>
-    </td>
-    <td class="far fa-comments">
-      <%= article_comment.comment %>
-    </td>
-    <td>
-      <% if article_comment.user == current_user %>
-        <%= link_to "削除", article_article_comment_path(article_comment.article, article_comment), method: :delete, remote: true, class: "btn btn-outline-primary" %>
-      <% end %>
-    </td>
-  </tr>
-</table>
+  <table class="article-comment">
+    <tr>
+      <td class="fas fa-user">
+        <%= link_to user_path(article_comment.user) do %>
+          <%= article_comment.user.name %>
+        <% end %>
+      </td>
+      <td class="far fa-comments">
+        <%= article_comment.comment %>
+      </td>
+      <td>
+        <% if article_comment.user == current_user %>
+          <%= link_to "削除", article_article_comment_path(article_comment.article, article_comment), method: :delete, remote: true, class: "btn btn-outline-primary" %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 <% end %>
