@@ -7,13 +7,15 @@
           <tr>
             <th>名前</th>
             <th>紹介文</th>
+            <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= link_to user.name, user_path(user.id) %></td>
+              <td><%= link_to user.name, user_path(user) %></td>
               <td><%= user.introduction %></td>
+              <td><%= link_to "プロフィール", user_path(user), class: "btn btn-outline-info" %></td>
             </tr>
           <% end %>
         </tbody>

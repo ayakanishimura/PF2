@@ -60,9 +60,11 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
+    @genres = Genre.all
     @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:notice] = "編集に成功しました"
@@ -73,14 +75,14 @@ class ArticlesController < ApplicationController
   end
 
   def myindex
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
     @genres = Genre.all
-    
+
     #表示の条件（公開・非公開）
-    if user.id == current_user.id
-      @articles = Article.where(user_id: user.id)
+    if @user.id == current_user.id
+      @articles = Article.where(user_id: @user.id)
     else
-      @articles = Article.where(status: 0, user_id: user.id)
+      @articles = Article.where(status: 0, user_id: @user.id)
     end
   end
 
