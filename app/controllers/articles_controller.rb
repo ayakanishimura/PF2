@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
     @genres = Genre.all
     @article = Article.new(article_params)
     @article.user_id = current_user.id
+    @article.score = Language.get_data(article_params[:body])
     @article.save
     # start_timeはcreateされた日時を指すため、create後に確定される
     if @article.update(start_time: @article.created_at)
@@ -36,7 +37,7 @@ class ArticlesController < ApplicationController
       order('count(article_id) desc').limit(5).pluck(:article_id)
     @all_ranks = Article.find(article_ids)
 
-    # 先月いいねランキング
+    # 前月いいねランキング
     one_months_ago = 1.months.ago
     one_months_ago_articles = Article.where(start_time: one_months_ago.beginning_of_month..one_months_ago.end_of_month)
     one_months_ago_article_ids = Favorite.
