@@ -1,0 +1,6 @@
+DB_USERNAME="root"
+DB_PASSWORD="Ayaka1208"
+DB_HOST="rds-mysql-server.cfwsauz8neuh.ap-northeast-1.rds.amazonaws.com"
+DB_DATABASE="PF2"
+
+GOOGLE_API_KEY="AIzaSyAmYieVcYgV7uFZ5uEe35oG5Q2j7rxZC0E"
