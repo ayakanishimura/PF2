@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="about-contents">
+    <div class="row d-flex justify-content-center">
+      <h4>My Diaryとは</h4>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row d-flex justify-content-center">
+          <h5>日々の頑張りを記録に。</h5>
+        </div>
+        <div class="row mb-3 d-flex justify-content-center main-text">
+          <p>My Diaryは日々の頑張りを記録する自分日記です。<br>
+            あなただけの、
+           自分史を作りましょう。</p>
+        </div>
+        <div class="row mb-3 d-flex justify-content-center main-text">
+          <p class="main-button"><%= link_to '新規登録', new_user_registration_path, class: "btn btn-success" %></p>
+          <p class="main-button"><%= link_to 'ログイン', new_user_session_path, class: "btn btn-success" %></p>
+          <p class="main-button"><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-success" %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row about-text">
+      <div class="col-lg-6 mt-4">
+        <h5>1日の頑張りを記録しよう</h5>
+        <p>趣味や仕事、資格の勉強、スポーツなど、</p><br>
+        <p>1日の頑張りを記録しましょう。</p><br>
+        <p>写真と一緒に投稿することもできます。</p><br>
+      </div>
+      <div class="col-lg-6">
+        <%= image_tag 'about/about1.jpg', class: 'about-image mt-5' %>
+      </div>
+    </div>
+    <div class="row about-text">
+      <div class="col-lg-6 order-lg-last mt-5">
+        <h5>仲間を探そう</h5>
+        <p>同じ志を持った仲間を見つけて、</p><br>
+        <p>いいねやコメントで褒め合いましょう。</p><br>
+        <p>仲間を作り、挫折しない環境を作りましょう。</p>
+      </div>
+      <div class="col-lg-6">
+        <%= image_tag 'about/about2.jpg', class: 'about-image mt-5' %>
+      </div>
+    </div>
+    <div class="row mt-5 d-flex justify-content-center main-text">
+        <h5 class="justify-content-center">便利な機能が盛りだくさん</h5>
+    </div>
+    <div class="row about-item">
+      <div class="col-lg-4">
+          <%= image_tag 'about/key.png', class: 'about-icon mt-5 mb-3' %><br>
+          <strong>公開設定機能</strong>
+          <p>公開する日記、自分だけの日記を<br>
+          選択することができます。</p>
+      </div>
+      <div class="col-lg-4">
+          <%= image_tag 'about/users.png', class: 'about-icon mt-5 mb-3' %><br>
+          <strong>フォロー機能</strong>
+          <p>同じ趣味や同じ志を持つ仲間を<br>
+          フォローしましょう。</p>
+      </div>
+      <div class="col-lg-4">
+          <%= image_tag 'about/callender.png', class: 'about-icon mt-5 mb-3' %><br>
+          <strong>カレンダー機能</strong>
+          <p>日記とカレンダーがリンクしているので<br>
+          頑張りが一目で確認できます。</p>
+      </div>
+    </div>
+    <div class="row about-item">
+      <div class="col-lg-4">
+        <%= image_tag 'about/search.png', class: 'about-icon mt-5 mb-3' %><br>
+        <strong>検索機能</strong>
+          <p>ジャンル検索やワード検索を活用して<br>
+          仲間を見つけましょう。</p>
+      </div>
+      <div class="col-lg-4">
+        <%= image_tag 'about/ranking.png', class: 'about-icon mt-5 mb-3' %><br>
+        <strong>ランキング機能</strong>
+        <p>当月と先月の<br>
+        いいねが多い日記を確認できます。</p>
+      </div>
+      <div class="col-lg-4">
+        <%= image_tag 'about/good.png', class: 'about-icon mt-5 mb-3' %><br>
+        <strong>いいね・コメント機能</strong>
+        <p>積極的にいいね、コメントをして<br>
+        お互いに褒め合いましょう。</p>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="about-button">
+        <%= link_to "始める", new_user_registration_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
